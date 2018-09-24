@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidLabs</string>
+    <string name="hello_message">Ausi Hello</string>
+    <string name="buttonText">I\'m a button</string>
+    <string name="password">Ausi password</string>
+    <string name="login">Ausi Login</string>
+    <string name="login_name">Ausi login name</string>
+    <string name="radioButton">Ausi Radio Button</string>
+    <string name="checkBox">Ausi checkBox</string>
+    <string name="switch1">Ausi what does this do?</string>
+    <string name="imageButton"></string>
+</resources>

@@ -10,4 +10,12 @@
     <string name="checkBox">Ausi checkBox</string>
     <string name="switch1">Ausi what does this do?</string>
     <string name="imageButton"></string>
+    <string name="loginButton">Log In</string>
+
+
+
+    <string name="Activity_End_Dialogue">Ausi: Would you like to finish this activity?</string>
+    <string name="Activity_End_Title">Activity Message</string>
+    <string name="Ok">Ok</string>
+    <string name="Cancel">Cancel</string>
 </resources>

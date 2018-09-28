@@ -9,4 +9,11 @@
     <string name="checkBox">Check Box</string>
     <string name="switch1">What does this do?</string>
     <string name="imageButton"></string>
+    <string name="loginButton">Log In</string>
+
+
+    <string name="Activity_End_Dialogue">Would you like to finish this activity?</string>
+    <string name="Activity_End_Title">Activity Message</string>
+    <string name="Ok">Ok</string>
+    <string name="Cancel">Cancel</string>
 </resources>

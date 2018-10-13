@@ -12,6 +12,9 @@
     <string name="imageButton"></string>
     <string name="loginButton">Log In</string>
 
+    <string name="startChatButtonText">Ausi Start Chat</string>
+    <string name="chatMessageText">message</string>
+    <string name="sendButton">Ausi Send</string>
 
 
     <string name="Activity_End_Dialogue">Ausi: Would you like to finish this activity?</string>

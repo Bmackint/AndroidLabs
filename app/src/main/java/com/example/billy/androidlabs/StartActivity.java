@@ -11,18 +11,26 @@ import android.widget.Toast;
 public class StartActivity extends Activity {
     protected final String ACTIVITY_NAME = "StartActivity";
     Toast msgPassedToast;
-    @Override
+
+    Button b2;
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         Button b1 = (Button)findViewById(R.id.button);
+        b2 = (Button)findViewById(R.id.startChatButton);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent nextScreen = new Intent(StartActivity.this, ListItemsActivity.class);
                 startActivityForResult(nextScreen, 50);
             }
+        });
+
+        b2.setOnClickListener((e)->{
+            Log.i(ACTIVITY_NAME, "User clicked start Chat");
+            Intent nextScreen = new Intent(StartActivity.this, ChatWindow.class);
+            startActivity(nextScreen);
         });
     }
     @Override

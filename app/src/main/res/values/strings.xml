@@ -11,6 +11,10 @@
     <string name="imageButton"></string>
     <string name="loginButton">Log In</string>
 
+    <string name="startChatButtonText">Start Chat</string>
+    <string name="chatMessageText"></string>
+    <string name="sendButton">Send</string>
+
 
     <string name="Activity_End_Dialogue">Would you like to finish this activity?</string>
     <string name="Activity_End_Title">Activity Message</string>

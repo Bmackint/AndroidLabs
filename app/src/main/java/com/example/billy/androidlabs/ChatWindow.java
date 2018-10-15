@@ -1,7 +1,10 @@
 package com.example.billy.androidlabs;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,28 +33,32 @@ public class ChatWindow extends Activity {
         msgView = (ListView) findViewById(R.id.chatView);
         msgList = new ArrayList<>();
 
+
         ChatAdapter chatAdapter = new ChatAdapter(this);/// is chatWindow the context?
         msgView.setAdapter(chatAdapter);
-        /*
-        SharedPreferences prefs = getSharedPreferences("Chat messages", MODE_PRIVATE);
-        String userString = prefs.getString("UserInput", "No value Exists");
-        */
 
+        ChatDatabaseHelper dbHelper = new ChatDatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT KEY_MESSAGE FROM MESSAGES", null);
+        while(!c.isAfterLast()){
+            Log.i(ACTIVITY_NAME, "SQL Message" + c.getString(c.getColumnIndex(dbHelper.KEY_MESSAGE)));
+        }
         send.setOnClickListener((e)->{
           String input = text.getText().toString();
-       //   msgList.add(0, input);
+
           msgList.add(input);
-          /*
-          ChatAdapter chatAdapter = new ChatAdapter(this);/// is chatWindow the context?
-          msgView.setAdapter(chatAdapter);
-*/
+
           chatAdapter.notifyDataSetChanged();
-          /*
-          SharedPreferences.Editor edit = prefs.edit();
-          edit.putString("UserInput", input);
-          */
+
           text.setText("");
+        //lab 5
+            ContentValues newRow = new ContentValues();
+            newRow.put("KEY_MESSAGE", input);
+            db.insert(dbHelper.getTableName(),null, newRow);
+
         });
+
+       // Cursor c = db.rawQuery("SELECT messages FROM messages, null,);
     }
 
     private class ChatAdapter extends ArrayAdapter<String>{

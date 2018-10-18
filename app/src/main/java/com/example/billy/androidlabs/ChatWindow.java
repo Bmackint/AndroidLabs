@@ -39,11 +39,47 @@ public class ChatWindow extends Activity {
 
         ChatDatabaseHelper dbHelper = new ChatDatabaseHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor c = db.rawQuery("SELECT KEY_MESSAGE FROM MESSAGES", null);
-        while(!c.isAfterLast()){
-            Log.i(ACTIVITY_NAME, "SQL Message" + c.getString(c.getColumnIndex(dbHelper.KEY_MESSAGE)));
+
+
+
+        //pulls first row 3 times
+
+        Cursor c = db.rawQuery("SELECT messages FROM message_table", null);
+        int numInstances = c.getCount();
+        int messageColumn = c.getColumnIndex("Messages");
+        Log.i(ACTIVITY_NAME,  Integer.toString(numInstances) + " rows in db, " + "and columns: " + dbHelper.KEY_ID + ", " + dbHelper.KEY_MESSAGE );
+        if(c.getCount() !=0){
+            c.moveToFirst();
+            for(int i = 1; i <= c.getCount(); i++){
+                String resultMessage = c.getString(messageColumn);
+                Log.i(ACTIVITY_NAME, "Cursor's column count: " + c.getColumnCount() + "     current row: " + c.getPosition());
+                msgList.add(resultMessage);
+                c.moveToNext();
+            }
+
         }
+
+
+        /*
+        if(c.getCount() != 0) {
+            c.moveToFirst();
+
+            msgList.add(c.getString(c.getPosition()));
+        }
+        */
+
+
+        /*
+        while(!c.isAfterLast()){
+
+            Log.i(ACTIVITY_NAME, text.getText().toString() + c.getString(c.getColumnIndex(dbHelper.KEY_MESSAGE)));
+            Log.i(ACTIVITY_NAME, text.getText().toString() + c.getString(c.getColumnIndex("KEY_MESSAGE")));
+        }
+        */
         send.setOnClickListener((e)->{
+          if(!db.isOpen()){
+              db.isOpen();
+          }
           String input = text.getText().toString();
 
           msgList.add(input);
@@ -53,13 +89,21 @@ public class ChatWindow extends Activity {
           text.setText("");
         //lab 5
             ContentValues newRow = new ContentValues();
-            newRow.put("KEY_MESSAGE", input);
+            newRow.put("messages", input);
             db.insert(dbHelper.getTableName(),null, newRow);
+            db.close();
 
         });
 
+        //db.close();
        // Cursor c = db.rawQuery("SELECT messages FROM messages, null,);
+        if(db.isOpen()){
+            Log.i("is open", "db is open");
+        }else if(!db.isOpen()){
+            Log.i("is closed", "db is closed");
+        }
     }
+
 
     private class ChatAdapter extends ArrayAdapter<String>{
         ChatAdapter(Context context) {

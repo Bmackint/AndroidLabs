@@ -26,7 +26,7 @@ public class StartActivity extends Activity {
                 startActivityForResult(nextScreen, 50);
             }
         });
-
+//
         b2.setOnClickListener((e)->{
             Log.i(ACTIVITY_NAME, "User clicked start Chat");
             Intent nextScreen = new Intent(StartActivity.this, ChatWindow.class);

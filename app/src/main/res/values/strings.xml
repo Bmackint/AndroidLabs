@@ -20,4 +20,6 @@
     <string name="Activity_End_Title">Activity Message</string>
     <string name="Ok">Ok</string>
     <string name="Cancel">Cancel</string>
+
+    <string name="ForecastButton">Check Weather Forecast</string>
 </resources>

@@ -13,12 +13,14 @@ public class StartActivity extends Activity {
     Toast msgPassedToast;
 
     Button b2;
+    Button ForeCastBtn;
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         Button b1 = (Button)findViewById(R.id.button);
         b2 = (Button)findViewById(R.id.startChatButton);
+        ForeCastBtn = (Button)findViewById(R.id.startWeatherForecastButton);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,6 +34,13 @@ public class StartActivity extends Activity {
             Intent nextScreen = new Intent(StartActivity.this, ChatWindow.class);
             startActivity(nextScreen);
         });
+
+        ForeCastBtn.setOnClickListener((e)->{
+           Log.i(ACTIVITY_NAME, "User clicked Check Forecast");
+           Intent nextScreen = new Intent(StartActivity.this, WeatherForecast.class);
+           startActivity(nextScreen);
+        });
+
     }
     @Override
     public void onActivityResult(int requestCode, int responseCode, Intent data){

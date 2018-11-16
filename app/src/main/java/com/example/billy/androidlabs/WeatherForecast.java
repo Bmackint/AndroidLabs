@@ -102,6 +102,7 @@ public class WeatherForecast extends Activity {
                             String name = parser.getName();
                             if(name.equals("temperature")){
                                 minTemp = parser.getAttributeValue(null, "min");
+
                                 publishProgress(25);
                                 maxTemp = parser.getAttributeValue(null, "max");
                                 publishProgress(50);
